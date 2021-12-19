@@ -12,3 +12,5 @@ Clone this repo and run:
 2. Modify data (y-axis) and x-axis to change the values on the chart.
 
 3. Select the chart you modified from the dropdown list on the create react app.
+
+![](/chart.png)
