@@ -1,34 +1,56 @@
 import React, { Component } from 'react';
-import Chart from 'react-apexcharts'
+import Chart from 'react-apexcharts';
 
 class Line extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       options: {
         stroke: {
-          curve: 'smooth'
+          curve: 'smooth',
         },
         markers: {
-          size: 0
+          size: 0,
         },
         xaxis: {
-          categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        }
+          categories: [],
+        },
       },
-      series: [{
-        data: [30, 40, 25, 50, 49, 21, 70, 51]
-      }],
-    }
+      series: [
+        {
+          data: [],
+        },
+      ],
+    };
   }
 
-  render() {
+  getRandomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
+  changeData = () => {
+    let y = [];
+    for (let i = 0; i < 20; i++) {
+      // let n = this.getRandomNumber(60, 100);
+      y.push(45 + parseInt(Math.random() * 35));
+      // y.push(n);
+    }
+    this.setState({ series: [{ data: y }] });
+  };
+
+  render() {
+    {
+      setInterval(this.changeData, 1000);
+    }
     return (
       <div className="line">
-        <Chart options={this.state.options} series={this.state.series} type="line" width="500" />
+        <Chart
+          options={this.state.options}
+          series={this.state.series}
+          type="line"
+          width="1500"
+        />
       </div>
     );
   }
